@@ -1,0 +1,35 @@
+group 'shepelev'
+version '1.0-SNAPSHOT'
+
+def globalModule = project(':global')
+def coreModule = project(':core')
+def guiModule = project(':gui')
+
+configure([globalModule, coreModule, guiModule]) {
+    apply(plugin: 'java')
+    apply(plugin: 'groovy')
+
+    sourceSets {
+        main { groovy { srcDirs = ["src"] } }
+    }
+}
+
+configure(coreModule) {
+    dependencies {
+        compile(globalModule)
+    }
+}
+
+configure(guiModule) {
+    dependencies {
+        compile(globalModule)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testCompile group: 'junit', name: 'junit', version: '4.12'
+}
