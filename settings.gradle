@@ -1,5 +1,6 @@
 rootProject.name = 'ecology'
-include 'global'
-include 'core'
-include 'gui'
 
+include(':ecology-global', ':ecology-core', ':ecology-gui')
+project(':ecology-global').projectDir = new File(settingsDir, 'modules/global')
+project(':ecology-core').projectDir = new File(settingsDir, 'modules/core')
+project(':ecology-gui').projectDir = new File(settingsDir, 'modules/gui')
